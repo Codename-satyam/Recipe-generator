@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* Dark overlay with blur */
+.recipe-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease;
+  z-index: 1000;
+}
+
+/* Glassmorphism Modal */
+.recipe-modal {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 650px;
+  width: 90%;
+  color: #fff;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  animation: slideIn 0.5s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+/* Recipe Image */
+.modal-image {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 20px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(90deg);
+}
+
+/* Title */
+.recipe-modal h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  color: #ffdd57;
+}
+
+/* Instructions */
+.instructions {
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-top: 15px;
+  text-align: left;
+  color: #f0f0f0;
+}
+
+/* List of ingredients */
+.recipe-modal ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.recipe-modal ul li {
+  margin: 8px 0;
+  font-size: 1.1rem;
+  padding-left: 20px;
+  position: relative;
+}
+
+.recipe-modal ul li::before {
+  content: "•";
+  color: #ffdd57;
+  position: absolute;
+  left: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

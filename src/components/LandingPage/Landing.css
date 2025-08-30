@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.main-line{
+  h1{
+  font-family: 'Pacifico', cursive;
+  font-size: 8rem;
+  text-align: center;
+  margin: 2px 0;
+  color: #fff;
+  }
+  p{
+    font-size: 2rem;
+    text-align: center;
+    color: #fff;
+    font-family: 'Pacifico', cursive;
+  }
+}
+.landing-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.main-line {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  color: white;
+}
+
+.fade-text span {
+  opacity: 0;
+  display: inline-block;
+  animation: fadeIn 0.5s forwards;
+}
+
+.fade-text span:nth-child(1) { animation-delay: 0.1s; }
+.fade-text span:nth-child(2) { animation-delay: 0.2s; }
+.fade-text span:nth-child(3) { animation-delay: 0.3s; }
+.fade-text span:nth-child(4) { animation-delay: 0.4s; }
+.fade-text span:nth-child(5) { animation-delay: 0.5s; }
+.fade-text span:nth-child(6) { animation-delay: 0.6s; }
+.fade-text span:nth-child(7) { animation-delay: 0.7s; }
+.fade-text span:nth-child(8) { animation-delay: 0.8s; }
+.fade-text span:nth-child(9) { animation-delay: 0.9s; }
+.fade-text span:nth-child(10) { animation-delay: 1s; }
+.fade-text span:nth-child(11) { animation-delay: 1.1s; }
+.fade-text span:nth-child(12) { animation-delay: 1.2s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sub-tag {
+  margin-top: 10px;
+  font-size: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease 2.5s forwards;
+}
+
+.button{
+  margin-top: 10px;
+  padding: 1px 20px;
+  p{
+    font-size: 20px;
+  }
+  opacity: 0;
+  color: #fff;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  animation: fadeIn 1s ease 1.5s forwards;
+}
+
+.button:hover {
+  background-color: #e64a19;
+}
+.landing-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: opacity 0.8s ease-in-out;
+  opacity: 1;
+}
+
+.landing-page.fade-out {
+  opacity: 0;
+}
+/* ---------- RESPONSIVE BREAKPOINTS ---------- */
+@media (max-width: 992px) {
+  .main-line h1 {
+    font-size: 5rem;
+  }
+  .main-line p {
+    font-size: 1.5rem;
+  }
+  .button {
+    padding: 8px 18px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-line h1 {
+    font-size: 4rem;
+  }
+  .main-line p {
+    font-size: 1.2rem;
+  }
+  .button {
+    padding: 7px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-line h1 {
+    font-size: 3rem;
+  }
+  .main-line p {
+    font-size: 1rem;
+  }
+  .button {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .main-line h1 {
+    font-size: 2.5rem;
+  }
+  .main-line p {
+    font-size: 0.9rem;
+  }
+  .button {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+  }
+}
