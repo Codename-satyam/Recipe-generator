@@ -1,6 +1,6 @@
 import React from "react";
-import { RecipeCard } from "../RecipeCard/RecipeCard"; 
-import "./Ingri.css"; 
+import { RecipeCard } from "../RecipeCard/RecipeCard";
+import "./Ingri.css";
 
 export function RecipeList({ recipes, onRecipeClick }) {
   if (!recipes || recipes.length === 0) {
@@ -11,9 +11,9 @@ export function RecipeList({ recipes, onRecipeClick }) {
     <div className="recipe-list">
       {recipes.map((recipe) => (
         <div
-          key={recipe.id}
+          key={recipe.idMeal} // ✅ Correct MealDB ID
           className="recipe-item"
-          onClick={() => onRecipeClick(recipe.id)} 
+          onClick={() => onRecipeClick(recipe.idMeal)} // ✅ Pass correct ID
         >
           <RecipeCard recipe={recipe} />
         </div>

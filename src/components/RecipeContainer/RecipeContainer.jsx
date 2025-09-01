@@ -20,11 +20,11 @@ export default function RecipeContainer() {
     try {
       const query = ingredients.join(",");
       const res = await fetch(
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&number=6&apiKey=e31c5bd2c448451396b0275073a40396`
+        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`
       );
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
-      setRecipes(data);
+      setRecipes(data.meals || []); // ✅ Correctly setting meals
     } catch (err) {
       setError("Something went wrong while fetching recipes.");
     } finally {
@@ -32,14 +32,13 @@ export default function RecipeContainer() {
     }
   };
 
-  // Fetch details for a single recipe
   const fetchRecipeDetails = async (id) => {
     try {
       const res = await fetch(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=e31c5bd2c448451396b0275073a40396`
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
       );
       const data = await res.json();
-      setSelectedRecipe(data);
+      setSelectedRecipe(data.meals ? data.meals[0] : null); // ✅ Get full details
       setIsModalOpen(true);
     } catch {
       alert("Failed to load recipe details");

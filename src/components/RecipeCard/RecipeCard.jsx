@@ -5,14 +5,11 @@ export function RecipeCard({ recipe }) {
   return (
     <div className="recipe-card">
       <img
-        src={recipe.image}
-        alt={recipe.title}
+        src={recipe.strMealThumb} // ✅ MealDB Image
+        alt={recipe.strMeal}
         className="recipe-image"
       />
-      <h3 className="recipe-title">{recipe.title}</h3>
-      <p className="recipe-info">
-        Used: {recipe.usedIngredientCount} | Missing: {recipe.missedIngredientCount}
-      </p>
+      <h3 className="recipe-title">{recipe.strMeal}</h3> {/* ✅ MealDB Title */}
     </div>
   );
 }
