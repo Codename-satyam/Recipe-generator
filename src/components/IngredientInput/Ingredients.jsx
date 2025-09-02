@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-import "./IngridientInput.css"
+import "./IngridientInput.css";
 
-export function IngredientInput({ ingredients, setIngredients }) {
+export function IngredientInput({ setIngredients, fetchRecipes }) {
   const [inputValue, setInputValue] = useState("");
 
-  const addIngredient = () => {
-    if (inputValue.trim() && !ingredients.includes(inputValue.trim())) {
-      setIngredients([...ingredients, inputValue.trim()]);
-      setInputValue("");
+  const handleGetRecipes = () => {
+    if (inputValue.trim()) {
+      setIngredients([inputValue.trim()]);
+      fetchRecipes(inputValue.trim()); 
     }
-  };
-
-  const removeIngredient = (ingredient) => {
-    setIngredients(ingredients.filter((ing) => ing !== ingredient));
   };
 
   return (
@@ -24,17 +20,9 @@ export function IngredientInput({ ingredients, setIngredients }) {
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Enter ingredient"
         />
-        <button onClick={addIngredient} className="btn-green">
-          Add
+        <button onClick={handleGetRecipes} className="btn-green">
+          Get Recipes
         </button>
-      </div>
-      <div className="ingredient-list">
-        {ingredients.map((ingredient) => (
-          <span key={ingredient} className="ingredient-chip">
-            {ingredient}
-            <button onClick={() => removeIngredient(ingredient)}>×</button>
-          </span>
-        ))}
       </div>
     </div>
   );

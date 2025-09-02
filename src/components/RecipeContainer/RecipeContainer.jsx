@@ -12,19 +12,19 @@ export default function RecipeContainer() {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fetchRecipes = async () => {
-    if (ingredients.length === 0) return;
+  // ✅ Fetch recipes based on a single ingredient
+  const fetchRecipes = async (ingredient) => {
+    if (!ingredient) return;
     setLoading(true);
     setError("");
 
     try {
-      const query = ingredients.join(",");
       const res = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`
+        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`
       );
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
-      setRecipes(data.meals || []); // ✅ Correctly setting meals
+      setRecipes(data.meals || []);
     } catch (err) {
       setError("Something went wrong while fetching recipes.");
     } finally {
@@ -38,7 +38,7 @@ export default function RecipeContainer() {
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
       );
       const data = await res.json();
-      setSelectedRecipe(data.meals ? data.meals[0] : null); // ✅ Get full details
+      setSelectedRecipe(data.meals ? data.meals[0] : null);
       setIsModalOpen(true);
     } catch {
       alert("Failed to load recipe details");
@@ -48,10 +48,14 @@ export default function RecipeContainer() {
   return (
     <div className="recipe-container">
       <h1 className="main-heading">Taste Bot</h1>
-      <IngredientInput ingredients={ingredients} setIngredients={setIngredients} />
-      <button onClick={fetchRecipes} className="btn-primary" disabled={loading}>
-        {loading ? "Loading..." : "Get Recipes"}
-      </button>
+
+
+      <IngredientInput
+        setIngredients={setIngredients}
+        fetchRecipes={fetchRecipes}
+        loading={loading}
+      />
+
       {error && <p className="error">{error}</p>}
       <RecipeList recipes={recipes} onRecipeClick={fetchRecipeDetails} />
       <RecipeModal
